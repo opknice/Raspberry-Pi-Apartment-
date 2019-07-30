@@ -1,15 +1,16 @@
-#----------connect_mysql.py------------
+import mysql.connector
 
 mydb = mysql.connector.connect(
   host="localhost",
-  user="myusername",
-  passwd="mypassword",
-  database="iot_device"
+  user="root",
+  passwd="cpe54146",
+  database="log_asset"
 )
+
 mycursor = mydb.cursor()
 
-sql = 'INSERT INTO iot(iot_name, iot_value1, iot_value2) VALUES (%s, %s, %s)'
-val = ('TEMP', '20', '25')
+sql = 'INSERT INTO log_data(ROOM, STATUS, DATE) VALUES (%s, %s, %s)'
+val = ('2', 'ON', '2019-07-30')
 mycursor.execute(sql, val)
 
 mydb.commit()
